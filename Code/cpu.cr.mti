@@ -1,15 +1,13 @@
 {G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v} {0 {vlog -work work -vopt -stats=none {G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v}
 Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
 -- Compiling module CPU
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(15): near "=": syntax error, unexpected '=', expecting ++ or --.
-** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(15): (vlog-2638) Bad name or identifier in Verilog compiler directive.  The following text was found where a compiler directive name or macro name was expected.: ;.
-** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(18): (vlog-2638) Bad name or identifier in Verilog compiler directive.  The following text was found where a compiler directive name or macro name was expected.: ;.
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(19): near "3": syntax error, unexpected INTEGER NUMBER, expecting ';'.
-** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(22): (vlog-2638) Bad name or identifier in Verilog compiler directive.  The following text was found where a compiler directive name or macro name was expected.: ;.
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(23): near "3": syntax error, unexpected INTEGER NUMBER, expecting ';'.
-** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(26): (vlog-2638) Bad name or identifier in Verilog compiler directive.  The following text was found where a compiler directive name or macro name was expected.: ;.
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(27): near "endcase": syntax error, unexpected endcase, expecting ';'.
-** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(36): Declarations not allowed in unnamed block.
-** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(37): Illegal declaration after the statement near line '35'.  Declarations must precede statements.  Look for stray semicolons.
+** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(17): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
+** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(18): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(24): near "3": syntax error, unexpected INTEGER NUMBER.
+** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(27): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
+** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(27): (vlog-2638) Bad name or identifier in Verilog compiler directive.  The following text was found where a compiler directive name or macro name was expected.: ;.
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(38): Declarations not allowed in unnamed block.
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(40): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+-- Compiling module alu
 
-} {4.0 5.0 7.0 8.0 9.0 10.0 11.0 14.0} {}}
+} {4.0 8.0 9.0 11.0} {}}
