@@ -20,36 +20,59 @@ n@_opt
 OL;O;2020.4;71
 R0
 vadder
-Z2 !s110 1625145566
+Z2 !s110 1625146808
 !i10b 1
-!s100 YDQJ7^4<a^3@5ZP7_T71I2
+!s100 [E:E0]^OABUI2fBm]BfXX0
 Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
-I4IBPfl@]eJTk5<VgYD:@U3
+I390k_hTdYcz[_nA92Cc;a2
 Z4 dG:/KNTU/4th term/Computer Architechture/HW/Project/Code
-Z5 w1625145561
+Z5 w1625146787
 Z6 8G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
 Z7 FG:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
-!i122 19
-L0 53 19
+!i122 24
+L0 26 19
 Z8 VDg1SIo80bB@j0V0VzS_@n1
 Z9 OL;L;2020.4;71
 r1
 !s85 0
 31
-Z10 !s108 1625145566.000000
-!s107 G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
-Z11 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
+Z10 !s108 1625146808.000000
+Z11 !s107 G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
+Z12 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
 !i113 0
-Z12 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z13 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vadder_test_bench
+R2
+!i10b 1
+!s100 QgX0OI8mokn8GXGdKg^P<2
+R3
+I`9O;nEz[PDUTaazGKP11V3
+R4
+R5
+R6
+R7
+!i122 24
+L0 46 16
+R8
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!i113 0
+R13
 R1
 vadder_unit_test_bench
-R2
+Z14 !s110 1625145566
 !i10b 1
 !s100 XP0SF^jkc8K@IEiY_Yf;M3
 R3
 Izb1WaEia^JnP4Tj4BAbVa1
 R4
-R5
+Z15 w1625145561
 R6
 R7
 !i122 19
@@ -59,11 +82,34 @@ R9
 r1
 !s85 0
 31
-R10
-Z13 !s107 G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
+Z16 !s108 1625145566.000000
 R11
-!i113 0
 R12
+!i113 0
+R13
+R1
+valu
+!s110 1625161065
+!i10b 1
+!s100 :3CJG6Z?h<j=eB4e;:7LM2
+R3
+IhNDM2BV;V?i?R;5GTKP[A0
+R4
+w1625161061
+R6
+R7
+!i122 25
+L0 50 16
+R8
+R9
+r1
+!s85 0
+31
+!s108 1625161064.000000
+R11
+R12
+!i113 0
+R13
 R1
 vALU
 R2
@@ -75,7 +121,7 @@ R4
 R5
 R6
 R7
-!i122 19
+!i122 24
 L0 1 24
 R8
 R9
@@ -83,20 +129,20 @@ r1
 !s85 0
 31
 R10
-R13
 R11
-!i113 0
 R12
+!i113 0
+R13
 R1
 n@a@l@u
 veightbit_fulladder
-R2
+R14
 !i10b 1
 !s100 YVN[:ggn[@`_1FY9PR_DM0
 R3
 InA8[mMELem;GzRbDz>f4<3
 R4
-R5
+R15
 R6
 R7
 !i122 19
@@ -106,20 +152,20 @@ R9
 r1
 !s85 0
 31
-R10
-R13
+R16
 R11
-!i113 0
 R12
+!i113 0
+R13
 R1
 vFA_df2
-R2
+R14
 !i10b 1
 !s100 BF7ICi13ghe:_YI^:EnBI1
 R3
 IMU1ISRoOa^Q?^8aNGdAdD0
 R4
-R5
+R15
 R6
 R7
 !i122 19
@@ -129,10 +175,10 @@ R9
 r1
 !s85 0
 31
-R10
-R13
+R16
 R11
-!i113 0
 R12
+!i113 0
+R13
 R1
 n@f@a_df2
