@@ -1,155 +1,108 @@
-
-
-
-module cpu (PC[3:0] , CLK , SC[2:0] , memory[7:0]memory1[15:0] ,AR[3:0] ,IR[7:0] ,opcode[2:0] , I);
-input PC[3:0];
-input CLK;
-input SC[2:0];
-input memory[7:0]memory1[15:0]; 
-input AR[3:0];
-input IR[7:0];
-input opcode[2:0];
-input I ; 
-SC = 3'b000;
-always @ (posedge CLK)
-begin 
-case(SC)
-3'b000: AR[3:0] = PC[3:0];
-SC = SC +1`;
-3'b001: PC[3:0] = PC[3:0] +1;
-IR[7:0] = memory1[ AR[3:0] ];
-SC = SC +1`;
-3'b010: I = IR[7];
-AR[3:0] = IR[3:0];
-opcode[2:0] = IR[6:4];
-SC = SC +1`;
-3'b011: 
-if ( I = 1)
-AR[3:0] = memory1[ AR[3:0] ]; // inja bas 3 bite memoriyo joda konim berizim ar
-SC = SC +1`;
-
-
-
-
-
-
-module alu ( opcode , AC , DR , enable , result);
-input [7:0] AC;
-input [7:0] DR;
-input [2:0] opcode;
-input enable;
-output [7:0] result; 
-reg [7:0] result ; 
-always @ ( enable)
-case (opcode)
-3'b000 : result = AC + DR;
-3'b001 : result = AC - DR;
-3'b010 : result = AC ^ DR; 
-3'b011 : result = AC + AC; 
-3'b110 : result = ~AC; 
-endcase
-endmodule
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module ALU(
-	input [7:0] AC,
-	input [7:0] DR,
-	input [2:0] selector,
-
-	output reg [7:0] result ,
-	output E
-	);
-
-always @(*)
-begin
-	case(selector)
-	3'b000: result = AC + DR; //add
-	//eightbit_fulladder(result, zero, AC, DR, 0);
-	3'b001: result = AC - DR; //sub
-	//eightbit_fulladder(result, zero, AC, DR, 1);
-	3'b010: result = AC ^ DR; //xor
-	3'b011: result = AC + AC; //multiply by 2
-	//eightbit_fulladder(result, zero, AC, AC, 0);
-	3'b110: result = ~AC; //cmp
-	default: result = 8'd0;
-	endcase
-end
-endmodule
-
-module FA_df2(sum, cout, A, B, cin);
-	output sum, cout;
-	input A, B, cin;
-  	assign{cout, sum} = A + B + cin;
-endmodule
-
-module eightbit_fulladder(Sum, Cout, Cin, A, B? mode); //mode 1: sub, mode 0: add
-	output [7:0]Sum;
-	output Cout;
-	input Cin;
-	input[7:0]A, B;
-	wire C1, C2, C3, C4, C5, C6, C7;
-
-	if(mode)
-  		B = ~B +1 ;
-
-	FA-df2 FA1(Sum[0], C1, A[0], B[0], Cin);
-	FA-df2 FA2(Sum[1], C2, A[1], B[1], C1);
-	FA-df2 FA3(Sum[2], C3, A[2], B[2], C2);
-	FA-df2 FA4(Sum[3], C4, A[3], B[3], C3);
-	FA-df2 FA5(Sum[4], C5, A[4], B[4], C4);
-	FA-df2 FA6(Sum[5], C6, A[5], B[5], C5);
-	FA-df2 FA7(Sum[6], C7, A[6], B[6], C6);
-	FA-df2 FA8(Sum[7], Cout, A[7], B[7], C7);
-endmodule
-
-module adder_unit_test_bench;
-	reg [7:0] a;
-	reg [7:0] b;
-	reg cin;
-	
-	wire [7:0] sum;
-	wire cout;
-	initial begin
-		a = 0;
-		b = 0;
-		cin = 0;
-		#100 a=8'b00110111; b=8'b00000101; cin=1'b0;
-		#100 a=8'b00110000; b=8'b00000110; cin=1'b0;
-		#100 a=8'b01011110; b=8'b00000100; cin=1'b0;
-		#100 a=8'b01101110; b=8'b00000011; cin=1'b0;
-		#100 a=8'b01101111; b=8'b00000111; cin=1'b0;
-		#100 a=8'b01110000; b=8'b00001000; cin=1'b0;
-		#100 a=8'b11111111; b=8'b00000000; cin=1'b1;
+module CPU(PC, CLK, SC,AR, IR, opcode, I);
+	input [3:0]PC;
+	input CLK;
+	input [2:0]SC;
+	input [3:0]AR;
+	input [7:0]IR;
+	input [2:0]opcode;
+	input I ; 
+	assign write = 0;
+	memory(CLK, AR, IR, DR, write); //inputash check she
+	assign SC = 3'b000;
+	always @ (posedge CLK)
+	begin 
+		case(SC)
+		3'b000: begin
+			AR[3:0] = PC[3:0];
+			SC= SC+1;
+			end
+		3'b001: begin
+			PC = PC + 1;
+			IR[7:0] = DR[7:0];
+			SC=SC+1;
+			end
+		3'b010: begin
+			I = IR[7];
+			AR[3:0] = IR[3:0];
+			opcode[2:0] = IR[6:4];
+			SC=SC+1;
+			end
+		3'b011: begin
+                        if (I == 1)
+				AR[3:0] = DR[3:0]; // inja bas 3 bite memoriyo joda konim berizim ar
+                                SC=SC+1;
+                        end
+		endcase
 	end
 endmodule
+	
+module memory(CLK, AR, data_in, DR, write);
+
+    input CLK;
+    input [3:0]AR; //address
+    input [7:0]data_in;
+    input write;
+    output [7:0]DR;
+    reg [7:0]M[0:15];
+
+    always @(posedge CLK)
+    begin
+      if(write==1)
+        M[AR] = data_in;
+        DR = M[AR];
+    end
+
+  endmodule
+
+module alu (opcode , AC , DR , enable , result);
+	input [7:0] AC;
+	input [7:0] DR;
+	input [2:0] opcode;
+	input enable;
+	output [7:0] result; 
+	reg [7:0] result ; 
+	always @ ( enable)
+	begin
+		case (opcode)
+		3'b000 : result = AC + DR;
+		3'b001 : result = AC - DR;
+		3'b010 : result = AC ^ DR; 
+		3'b011 : result = AC + AC; 
+		3'b110 : result = ~AC; 
+		endcase
+	end
+endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
