@@ -3,7 +3,7 @@ module ALU(
 	input [7:0] DR,
 	input [2:0] selector,
 
-	output reg [7:0] result,
+	output reg [7:0] result ,
 	output E
 	);
 

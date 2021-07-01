@@ -23,7 +23,6 @@ begin
 end
 endmodule
 
-
 module FA_df2(sum, cout, A, B, cin);
 	output sum, cout;
 	input A, B, cin;
