@@ -1,3 +1,86 @@
+
+
+
+module cpu (PC[3:0] , CLK , SC[2:0] , memory[7:0]memory1[15:0] ,AR[3:0] ,IR[7:0] ,opcode[2:0] , I);
+input PC[3:0];
+input CLK;
+input SC[2:0];
+input memory[7:0]memory1[15:0]; 
+input AR[3:0];
+input IR[7:0];
+input opcode[2:0];
+input I ; 
+SC = 3'b000;
+always @ (posedge CLK)
+begin 
+case(SC)
+3'b000: AR[3:0] = PC[3:0];
+SC = SC +1`;
+3'b001: PC[3:0] = PC[3:0] +1;
+IR[7:0] = memory1[ AR[3:0] ];
+SC = SC +1`;
+3'b010: I = IR[7];
+AR[3:0] = IR[3:0];
+opcode[2:0] = IR[6:4];
+SC = SC +1`;
+3'b011: 
+if ( I = 1)
+AR[3:0] = memory1[ AR[3:0] ]; // inja bas 3 bite memoriyo joda konim berizim ar
+SC = SC +1`;
+
+
+
+
+
+
+module alu ( opcode , AC , DR , enable , result);
+input [7:0] AC;
+input [7:0] DR;
+input [2:0] opcode;
+input enable;
+output [7:0] result; 
+reg [7:0] result ; 
+always @ ( enable)
+case (opcode)
+3'b000 : result = AC + DR;
+3'b001 : result = AC - DR;
+3'b010 : result = AC ^ DR; 
+3'b011 : result = AC + AC; 
+3'b110 : result = ~AC; 
+endcase
+endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module ALU(
 	input [7:0] AC,
 	input [7:0] DR,
