@@ -1,13 +1,21 @@
 {G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v} {0 {vlog -work work -vopt -stats=none {G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v}
 Model Technology ModelSim SE-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
 -- Compiling module CPU
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(17): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(18): near "=": syntax error, unexpected '=', expecting ++ or --.
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(24): near "3": syntax error, unexpected INTEGER NUMBER.
-** Error: (vlog-13069) G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(27): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
-** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(27): (vlog-2638) Bad name or identifier in Verilog compiler directive.  The following text was found where a compiler directive name or macro name was expected.: ;.
-** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(38): Declarations not allowed in unnamed block.
-** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(40): Illegal declaration after the statement near line '37'.  Declarations must precede statements.  Look for stray semicolons.
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(16): (vlog-2110) Illegal reference to net "AR".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(17): (vlog-2110) Illegal reference to net "SC".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(20): (vlog-2110) Illegal reference to net "PC".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(21): (vlog-2110) Illegal reference to net "IR".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(21): Illegal part-select expression for variable "DR"
+** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(21): (vlog-2697) MSB 7 of part-select into 'DR' is out of bounds.
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(22): (vlog-2110) Illegal reference to net "SC".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(26): (vlog-2110) Illegal reference to net "I".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(29): (vlog-2110) Illegal reference to net "SC".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(33): (vlog-2110) Illegal reference to net "AR".
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(33): Illegal part-select expression for variable "DR"
+** Warning: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(33): (vlog-2697) MSB 3 of part-select into 'DR' is out of bounds.
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(34): (vlog-2110) Illegal reference to net "SC".
+-- Compiling module memory
+** Error: G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v(52): (vlog-2110) Illegal reference to net "DR".
 -- Compiling module alu
 
-} {4.0 8.0 9.0 11.0} {}}
+} {4.0 9.0 10.0 15.0 16.0 17.0 18.0 19.0} {}}
