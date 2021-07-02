@@ -32,7 +32,6 @@ module CPU(CLK);
 			SC=SC+1;
 			end
 		3'b010: begin
-			//assign {I, opcode, AR} = {IR[7], IR[6:4], IR[3:0]};
 			//I = IR[7];
 			assign I = IR7;
 			assign {AR} = {IR3, IR2, IR1, IR0};
@@ -55,14 +54,15 @@ module memory(CLK, AR, data_in, DR, write);
     input [3:0]AR; //address
     input [7:0]data_in;
     input write;
-    output [7:0]DR;
+    output reg [7:0]DR;
     reg [7:0]M[0:15];
 
     always @(posedge CLK)
     begin
       if(write==1)
         M[AR] = data_in;
-        assign DR = M[AR];
+      else if(write == 0)
+      	assign DR = M[AR];
     end
 endmodule
 
