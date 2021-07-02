@@ -1,5 +1,5 @@
-module CPU(CLK);
-	input CLK;
+module CPU(clk);
+	input clk;
 	reg [7:0]M[0:15];
 	reg [7:0]AC; 
 	reg [3:0]PC;
@@ -10,7 +10,7 @@ module CPU(CLK);
 	reg I; 
 	reg IR0, IR1, IR2, IR3, IR4, IR5, IR6, IR7;
 	assign SC = 3'b000;
-	always @ (posedge CLK)
+	always @ (posedge clk)
 	begin 
 		case(SC)
 		3'b000: begin
@@ -77,6 +77,21 @@ module CPU(CLK);
 	end
 endmodule
 
-module cpu_test;
-	reg 
+`timescale 1ns / 1ps
+`include "Parameter.v"
+module
+	reg clk;
+	CPU cpu(.clk(clk));
+
+	initial
+	begin
+	clk <= 0;
+	`simulation_time;
+   	$finish;
+	end
+	
+	always
+	begin
+		#5 clk = ~clk;
+	end
 endmodule

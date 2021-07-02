@@ -88,29 +88,6 @@ R12
 !i113 0
 R13
 R1
-valu
-!s110 1625228513
-!i10b 1
-!s100 j[gX@=iZ2jHQLb]=@D?C@3
-R3
-I<UHETRCKgR31<]Z6L9eL71
-R4
-w1625228511
-R6
-R7
-!i122 82
-L0 69 18
-R8
-R9
-r1
-!s85 0
-31
-!s108 1625228513.000000
-R11
-R12
-!i113 0
-R13
-R1
 vALU
 Z17 !s110 1625228757
 !i10b 1
@@ -135,25 +112,48 @@ R12
 R13
 R1
 n@a@l@u
-vCPU
-!s110 1625249293
+valu
+!s110 1625228513
 !i10b 1
-!s100 m;Ici9O8LBhRz0oAc2jXm3
+!s100 j[gX@=iZ2jHQLb]=@D?C@3
 R3
-I;mnMggLB5cMMOHba05b@n2
+I<UHETRCKgR31<]Z6L9eL71
 R4
-w1625249292
+w1625228511
 R6
 R7
-!i122 86
+!i122 82
+L0 69 18
+R8
+R9
+r1
+!s85 0
+31
+!s108 1625228513.000000
+R11
+R12
+!i113 0
+R13
+R1
+vCPU
+Z20 !s110 1625253056
+!i10b 1
+!s100 Y@<IHNH[V?ZZ9Bai8TSQ=1
+R3
+I8]Kj[m;bze[U9caY`?nb22
+R4
+Z21 w1625253055
+R6
+R7
+!i122 95
 L0 1 78
 R8
 R9
 r1
 !s85 0
 31
-!s108 1625249293.000000
-R11
+Z22 !s108 1625253056.000000
+!s107 Parameter.v|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
 R12
 !i113 0
 R13
@@ -225,6 +225,29 @@ r1
 31
 R19
 R11
+R12
+!i113 0
+R13
+R1
+vtest_bench
+R20
+!i10b 1
+!s100 C99<B6Cd^ILlV_@I:T4<j1
+R3
+I[iC68MJ9A<@Y8m9M8hUdX3
+R4
+R21
+R6
+R7
+!i122 95
+L0 82 16
+R8
+R9
+r1
+!s85 0
+31
+R22
+Z23 !s107 Parameter.v|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
 R12
 !i113 0
 R13
