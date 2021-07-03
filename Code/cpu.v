@@ -1,10 +1,9 @@
-module CPU(clk, AC_input, PC_input);
+module CPU(clk, AC_input);
 	input clk;
 	input [7:0]AC_input; 
-	input [3:0]PC_input;
 	//define regs for inputs
 	reg [7:0]AC; 
-	reg [3:0]PC;
+	reg [3:0]PC = 0;
 	//auxiliary regs
 	reg [2:0]SC = 0;
 	reg [3:0]AR;
@@ -17,7 +16,6 @@ module CPU(clk, AC_input, PC_input);
 	initial
 	begin
 	assign AC = AC_input;
-	assign PC = PC_input;
 	M[0] = 8'b00001000;
 	M[1] = 8'b00011000;
 	M[2] = 8'b00101000;
@@ -45,40 +43,40 @@ module CPU(clk, AC_input, PC_input);
 			end
 		3'b001: begin
 			PC = PC + 1;
-			assign {IR} = {M[AR]};
+			IR = M[AR];
 			SC = SC + 1;
 			end
 		3'b010: begin
-			assign IR7 = IR[7];
-			assign IR6 = IR[6];
-			assign IR5 = IR[5];
-			assign IR4 = IR[4];
-			assign IR3 = IR[3];
-			assign IR2 = IR[2];
-			assign IR1 = IR[1];
-			assign IR0 = IR[0];
-			assign I = IR7;
-			assign {opcode} = {IR6, IR5, IR4};
-			assign {AR} = {IR3, IR2, IR1, IR0};
+			 IR7 = IR[7];
+			 IR6 = IR[6];
+			 IR5 = IR[5];
+			 IR4 = IR[4];
+			 IR3 = IR[3];
+			 IR2 = IR[2];
+			 IR1 = IR[1];
+			 IR0 = IR[0];
+			 I = IR7;
+			 {opcode} = {IR6, IR5, IR4};
+			 {AR} = {IR3, IR2, IR1, IR0};
 			SC = SC + 1;
 			end
 		3'b011: begin
                         if (I == 1)
-				assign {AR} = {M[AR]};
+				 {AR} = {M[AR]};
                         SC = SC + 1;
                         end
 		3'b100: begin
 			case(opcode)
 			3'b000: begin
-				assign AC = AC + M[AR]; 
+				 AC = AC + M[AR]; 
 				SC = 0;
 				end
 			3'b001: begin
-				assign AC = AC - M[AR];
+				 AC = AC - M[AR];
 				SC = 0;
 				end
 			3'b010: begin
-				assign AC = AC ^ M[AR];
+				 AC = AC ^ M[AR];
 				SC = 0;
 				end
 			3'b011: begin
@@ -86,7 +84,7 @@ module CPU(clk, AC_input, PC_input);
 				SC = 0;
 				end
 			3'b100: begin
-				assign AC = M[AR];
+				 AC = M[AR];
 				SC = 0;
 				end
 			3'b101: begin
@@ -106,17 +104,14 @@ endmodule
 module test_bench;
 	reg clk;
 	reg [7:0] AC_test;
-	reg [3:0] PC_test;
 
 	CPU cpu(.clk(clk),
-		.AC_input(AC_test),
-		.PC_input(PC_test));
+		.AC_input(AC_test));
 	initial
 	begin
 		clk <= 0;
 		AC_test = 8'b00000000;
-		PC_test = 4'b0000;
-		#100
+		#500
 		$finish;
 	end
 
