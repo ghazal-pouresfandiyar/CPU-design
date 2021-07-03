@@ -1,9 +1,9 @@
-module CPU(clk, AC_input, AC);
+module CPU(clk, AC_input);
 	input clk;
 	input [7:0]AC_input; 
-	output reg [7:0]AC;
+	//output reg [7:0]AC;
 	//define regs for inputs
-	//reg [7:0]AC = AC_input; 
+	reg [7:0]AC = AC_input; 
 	initial AC = AC_input;
 	//auxiliary regs
 	reg [2:0]SC = 0;

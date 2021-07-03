@@ -106,11 +106,10 @@ endmodule
 module test_bench;
 	reg clk;
 	reg [7:0] AC_test;
-	wire [7:0]AC;
 
 	CPU cpu(.clk(clk),
-		.AC_input(AC_test),
-		.AC(AC));
+		.AC_input(AC_test));
+
 	initial
 	begin
 		clk <= 0;
