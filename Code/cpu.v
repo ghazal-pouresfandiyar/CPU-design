@@ -91,28 +91,25 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	end
 endmodule
 
-`timescale 1ns / 1ps
-`include "Parameter.v"
 module test_bench;
 	reg clk;
 	reg [7:0] AC;
 	reg [7:0] PC;
 	reg [7:0] IR;
+	
+	always #5 clk = ~clk;
 
 	initial
 	begin
-	clk <= 0;
-	`simulation_time;
-   	$finish;
-	AC = 8'b00000000;
-	PC = 8'b00000000;
-	IR = 01100000; //cmp instruction, direct addressing in address 0000
+		clk <= 0;
+		AC = 8'b00000000;
+		PC = 8'b00000000;
+		IR = 01100000; //cmp instruction, direct addressing in address 0000
+		#100
+		$finish;
 	end
 	
 	CPU cpu(clk, AC, PC, IR);
 
-	always
-	begin
-		#5 clk = ~clk;
-	end
+	
 endmodule

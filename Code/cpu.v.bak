@@ -36,12 +36,18 @@ module CPU(clk, AC_input, PC_input, IR_input);
 			assign {IR} = {M[AR]};
 			SC = SC + 1;
 			end
-		3'b010: initial 
-			begin
-				assign I = IR[7];
-				assign opcode = Ir[6:4];
-				assign {AR} = {IR3, IR2, IR1, IR0};
-			end
+		3'b010: begin
+			assign IR7 = IR[7];
+			assign IR6 = IR[6];
+			assign IR5 = IR[5];
+			assign IR4 = IR[4];
+			assign IR3 = IR[3];
+			assign IR2 = IR[2];
+			assign IR1 = IR[1];
+			assign IR0 = IR[0];
+			assign I = IR7;
+			assign {opcode} = {IR6, IR5, IR4};
+			assign {AR} = {IR3, IR2, IR1, IR0};
 			SC = SC + 1;
 			end
 		3'b011: begin
@@ -85,8 +91,6 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	end
 endmodule
 
-`timescale 1ns / 1ps
-`include "Parameter.v"
 module test_bench;
 	reg clk;
 	reg [7:0] AC;
@@ -95,18 +99,13 @@ module test_bench;
 
 	initial
 	begin
-	clk <= 0;
-	`simulation_time;
-   	$finish;
-	AC = 8'b00000000;
-	PC = 8'b00000000;
-	IR = 01100000; //cmp instruction, direct addressing in address 0000
+		clk <= 0;
+		AC = 8'b00000000;
+		PC = 8'b00000000;
+		IR = 01100000; //cmp instruction, direct addressing in address 0000
 	end
 	
 	CPU cpu(clk, AC, PC, IR);
 
-	always
-	begin
-		#5 clk = ~clk;
-	end
+	always #5 clk = ~clk;
 endmodule
