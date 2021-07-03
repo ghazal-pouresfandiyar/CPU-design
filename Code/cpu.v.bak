@@ -18,7 +18,7 @@ module CPU(clk, AC_input, PC_input);
 	begin
 	assign AC = AC_input;
 	assign PC = PC_input;
-	$readmemb("Memory.list", M);
+	$readmemb("G:\KNTU\4th term\Computer Architechture\HW\Project\Code\Memory.txt", M);
 	end
 	
 	always @ (posedge clk)

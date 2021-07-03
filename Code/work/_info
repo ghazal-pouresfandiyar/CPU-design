@@ -20,10 +20,10 @@ n@_opt
 Z3 OL;O;2020.4;71
 R0
 T_opt1
-!s110 1625326501
-VTlO3ZJ=^>RAAX^[7^GocD2
+!s110 1625327837
+VdiBAT^^m`8C8eYiaRAVH?0
 Z4 04 10 4 work test_bench fast 0
-=1-74d02b12cf52-60e083a4-37e-3668
+=1-74d02b12cf52-60e088dd-1aa-7f0
 R1
 R2
 n@_opt1
@@ -39,23 +39,23 @@ n@_opt2
 R3
 R0
 vCPU
-Z5 !s110 1625326487
+Z5 !s110 1625327812
 !i10b 1
-!s100 D`Y5;7M?eQS6@^P>dDX[G3
+!s100 g2G;lcL6=mnCPA`[6dOlb3
 Z6 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IdPi4eJSoCmm_<f^c60:Uh1
+I8P>[ZP@W90n]g?I[HRFB:2
 Z7 dG:/KNTU/4th term/Computer Architechture/HW/Project/Code
-Z8 w1625326486
+Z8 w1625327810
 Z9 8G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
 Z10 FG:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
-!i122 143
-L0 1 89
+!i122 144
+L0 1 105
 Z11 VDg1SIo80bB@j0V0VzS_@n1
 Z12 OL;L;2020.4;71
 r1
 !s85 0
 31
-Z13 !s108 1625326487.000000
+Z13 !s108 1625327811.000000
 Z14 !s107 G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
 Z15 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
 !i113 0
@@ -88,15 +88,15 @@ R2
 vtest_bench
 R5
 !i10b 1
-!s100 K5hb@?YmMV9zYd8Sz23AA2
+!s100 7PBc@4>;>I4hY6ezzA4320
 R6
-Ib@BU4lzhNCc_=?g@Q<E@k1
+IQ4lbdaQaJW09=OSY@XN]01
 R7
 R8
 R9
 R10
-!i122 143
-L0 91 19
+!i122 144
+L0 107 19
 R11
 R12
 r1
