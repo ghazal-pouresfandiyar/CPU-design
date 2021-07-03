@@ -24,7 +24,6 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	$readmemh("Memory.list", M);
 	end
 	
-
 	always @ (posedge clk)
 	begin 
 		case(SC)
@@ -91,15 +90,6 @@ module CPU(clk, AC_input, PC_input, IR_input);
 		endcase
 	end
 endmodule
-
-module readmemh_tb();
-    reg [7:0] test_memory [0:15];
-    initial begin
-        $display("Loading rom.");
-        $readmemb("rom_image.mem", test_memory);
-    end
-endmodule
-
 
 `timescale 1ns / 1ps
 `include "Parameter.v"

@@ -21,10 +21,9 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	assign AC = AC_input;
 	assign PC = PC_input;
 	assign IR = IR_input;
-	$readmemb("Memory.list", M);
+	$readmemh("Memory.list", M);
 	end
 	
-
 	always @ (posedge clk)
 	begin 
 		case(SC)
@@ -37,18 +36,12 @@ module CPU(clk, AC_input, PC_input, IR_input);
 			assign {IR} = {M[AR]};
 			SC = SC + 1;
 			end
-		3'b010: begin
-			assign IR7 = IR[7];
-			assign IR6 = IR[6];
-			assign IR5 = IR[5];
-			assign IR4 = IR[4];
-			assign IR3 = IR[3];
-			assign IR2 = IR[2];
-			assign IR1 = IR[1];
-			assign IR0 = IR[0];
-			assign I = IR7;
-			assign {opcode} = {IR6, IR5, IR4};
-			assign {AR} = {IR3, IR2, IR1, IR0};
+		3'b010: initial 
+			begin
+				assign I = IR[7];
+				assign opcode = Ir[6:4];
+				assign {AR} = {IR3, IR2, IR1, IR0};
+			end
 			SC = SC + 1;
 			end
 		3'b011: begin
@@ -91,15 +84,6 @@ module CPU(clk, AC_input, PC_input, IR_input);
 		endcase
 	end
 endmodule
-
-module readmemh_tb();
-    reg [7:0] test_memory [0:15];
-    initial begin
-        $display("Loading rom.");
-        $readmemb("rom_image.mem", test_memory);
-    end
-endmodule
-
 
 `timescale 1ns / 1ps
 `include "Parameter.v"
