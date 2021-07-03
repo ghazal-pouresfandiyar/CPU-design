@@ -1,15 +1,14 @@
-module CPU(clk, AC_input, PC_input, IR_input);
+module CPU(clk, AC_input, PC_input);
 	input clk;
 	input [7:0]AC_input; 
 	input [3:0]PC_input;
-	input [7:0]IR_input;
 	//define regs for inputs
 	reg [7:0]AC; 
 	reg [3:0]PC;
-	reg [7:0]IR;
 	//auxiliary regs
 	reg [2:0]SC;
 	reg [3:0]AR;
+	reg [7:0]IR;
 	reg [2:0]opcode;
 	reg I; 
 	reg IR0, IR1, IR2, IR3, IR4, IR5, IR6, IR7;
@@ -17,17 +16,18 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	//assignments
 	initial
 	begin
-	assign SC = 3'b000;
+	assign SC = 3'b111;
 	assign AC = AC_input;
 	assign PC = PC_input;
-	assign IR = IR_input;
 	$readmemh("Memory.list", M);
 	end
 	
 	always @ (posedge clk)
 	begin 
+	SC = 3'B000;
 		case(SC)
 		3'b000: begin
+			SC = 3'B001;
 			AR[3:0] = PC[3:0];
 			SC = SC + 1;
 			end
@@ -95,22 +95,16 @@ module test_bench;
 	reg clk;
 	reg [7:0] AC_test;
 	reg [3:0] PC_test;
-	reg [7:0] IR_test;
-	
+
 	CPU cpu(.clk(clk),
 		.AC_input(AC_test),
-		.PC_input(PC_test),
-		.IR_input(IR_test));
-
+		.PC_input(PC_test));
 	initial
 	begin
 		clk <= 0;
 		AC_test = 8'b00000000;
 		PC_test = 4'b0000;
-		IR_test = 01100000; //cmp instruction, direct addressing in address 0000
-		#50
-		IR_test = 01011000;
-		#50
+		#100
 		$finish;
 	end
 
