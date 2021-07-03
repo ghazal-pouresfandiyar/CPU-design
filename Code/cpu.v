@@ -6,7 +6,7 @@ module CPU(clk, AC_input, PC_input);
 	reg [7:0]AC; 
 	reg [3:0]PC;
 	//auxiliary regs
-	reg [2:0]SC;
+	reg [2:0]SC = 0;
 	reg [3:0]AR;
 	reg [7:0]IR;
 	reg [2:0]opcode;
@@ -16,10 +16,9 @@ module CPU(clk, AC_input, PC_input);
 	//assignments
 	initial
 	begin
-	assign SC = 3'b000;
 	assign AC = AC_input;
 	assign PC = PC_input;
-	$readmemh("Memory.list", M);
+	$readmemb("Memory.txt", M);
 	end
 	
 	always @ (posedge clk)
