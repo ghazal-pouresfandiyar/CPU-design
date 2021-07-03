@@ -18,7 +18,23 @@ module CPU(clk, AC_input, PC_input);
 	begin
 	assign AC = AC_input;
 	assign PC = PC_input;
-	$readmemb("G:\KNTU\4th term\Computer Architechture\HW\Project\Code\Memory.txt", M);
+	//$readmemb("Memory.txt", M);
+	M[0] = 8'b00001000;
+	M[1] = 8'b00011000;
+	M[2] = 8'b00101000;
+	M[3] = 8'b00111000;
+	M[4] = 8'b01001000;
+	M[5] = 8'b01011000;
+	M[6] = 8'b01101000;
+	M[7] = 8'b10001001;
+	M[8] = 8'b00001001;
+	M[9] = 8'b00001000;
+	M[10] = 8'b00001000;
+	M[11] = 8'b00001001;
+	M[12] = 8'b00001000;
+	M[13] = 8'b00001000;
+	M[14] = 8'b00001001;
+	M[15] = 8'b00001000;
 	end
 	
 	always @ (posedge clk)

@@ -18,7 +18,6 @@ module CPU(clk, AC_input, PC_input);
 	begin
 	assign AC = AC_input;
 	assign PC = PC_input;
-	//$readmemb("Memory.txt", M);
 	M[0] = 8'b00001000;
 	M[1] = 8'b00011000;
 	M[2] = 8'b00101000;
