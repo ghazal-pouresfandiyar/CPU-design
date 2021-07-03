@@ -16,12 +16,14 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	reg I; 
 	reg IR0, IR1, IR2, IR3, IR4, IR5, IR6, IR7;
 	//assignments
+	initial
+	begin
 	assign SC = 3'b000;
 	//assign M = M_input;
 	assign AC = AC_input;
 	assign PC = PC_input;
 	assign IR = IR_input;
-
+	end
 	always @ (posedge clk)
 	begin 
 		case(SC)
@@ -97,7 +99,6 @@ module test_bench;
 	reg [7:0] PC;
 	reg [7:0] IR;
 
-
 	initial
 	begin
 	clk <= 0;
@@ -108,11 +109,12 @@ module test_bench;
 	IR = 01100000; //cmp instruction, direct addressing in address 0000
 	end
 	
-	CPU cpu(
-		.clk(clk),
-		.AC(AC),
-		.PC(PC),
-		.IR(IR));
+	CPU cpu(clk, AC, PC, IR);
+	//CPU cpu(
+		//.clk(clk),
+		//.AC(AC),
+		//.PC(PC),
+		//.IR(IR));
 	always
 	begin
 		#5 clk = ~clk;
