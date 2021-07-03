@@ -1,11 +1,9 @@
 module CPU(clk, AC_input, PC_input, IR_input);
 	input clk;
-	//input [7:0]M_input[0:15];
 	input [7:0]AC_input; 
 	input [3:0]PC_input;
 	input [7:0]IR_input;
 	//define regs for inputs
-	reg [7:0]M[0:15];
 	reg [7:0]AC; 
 	reg [3:0]PC;
 	reg [7:0]IR;
@@ -15,15 +13,18 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	reg [2:0]opcode;
 	reg I; 
 	reg IR0, IR1, IR2, IR3, IR4, IR5, IR6, IR7;
+	reg [7:0]M[0:15]; //16 x 8bit memory
 	//assignments
 	initial
 	begin
 	assign SC = 3'b000;
-	//assign M = M_input;
 	assign AC = AC_input;
 	assign PC = PC_input;
 	assign IR = IR_input;
+	$readmemh("Memory.list", M);
 	end
+	
+
 	always @ (posedge clk)
 	begin 
 		case(SC)
@@ -91,6 +92,15 @@ module CPU(clk, AC_input, PC_input, IR_input);
 	end
 endmodule
 
+module readmemh_tb();
+    reg [7:0] test_memory [0:15];
+    initial begin
+        $display("Loading rom.");
+        $readmemb("rom_image.mem", test_memory);
+    end
+endmodule
+
+
 `timescale 1ns / 1ps
 `include "Parameter.v"
 module test_bench;
@@ -110,11 +120,7 @@ module test_bench;
 	end
 	
 	CPU cpu(clk, AC, PC, IR);
-	//CPU cpu(
-		//.clk(clk),
-		//.AC(AC),
-		//.PC(PC),
-		//.IR(IR));
+
 	always
 	begin
 		#5 clk = ~clk;
