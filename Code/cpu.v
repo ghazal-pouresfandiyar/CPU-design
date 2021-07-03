@@ -1,12 +1,8 @@
-module CPU(clk, AC_input);
+module CPU(clk);
 	input clk;
-	input [7:0]AC_input; 
-	//output reg [7:0]AC;
-	//define regs for inputs
-	reg [7:0]AC = AC_input; 
-	initial AC = AC_input;
 	//auxiliary regs
 	reg [2:0]SC = 0;
+	reg [7:0]AC =0 ; 
 	reg [3:0]PC = 0;
 	reg [3:0]AR;
 	reg [7:0]IR;
@@ -17,7 +13,6 @@ module CPU(clk, AC_input);
 	//assignments
 	initial
 	begin
-	//assign AC = AC_input;
 	M[0] = 8'b00001000;
 	M[1] = 8'b00011000;
 	M[2] = 8'b00101000;
@@ -45,7 +40,7 @@ module CPU(clk, AC_input);
 			end
 		3'b001: begin
 			PC = PC + 1;
-			IR = M[AR];
+		       {IR} = {M[AR]};
 			SC = SC + 1;
 			end
 		3'b010: begin
@@ -64,7 +59,7 @@ module CPU(clk, AC_input);
 			end
 		3'b011: begin
                         if (I == 1)
-				{AR} = {M[AR]};
+				assign {AR} = {M[AR]};
                         SC = SC + 1;
                         end
 		3'b100: begin
@@ -105,16 +100,13 @@ endmodule
 
 module test_bench;
 	reg clk;
-	reg [7:0] AC_test;
 
-	CPU cpu(.clk(clk),
-		.AC_input(AC_test));
-
+	CPU cpu(.clk(clk));
 	initial
 	begin
 		clk <= 0;
-		AC_test = 8'b00000000;
-		#500
+
+		#1000
 		$finish;
 	end
 
