@@ -20,81 +20,91 @@ n@_opt
 Z3 OL;O;2020.4;71
 R0
 T_opt1
-!s110 1625300811
-V]2G?9E0QR[6Y];Ebo9D@i1
-04 10 4 work test_bench fast 0
-=1-74d02b12cf52-60e01f4b-23d-28c8
+!s110 1625315758
+V<O_5?2LQYOmPcU4KQQ>9:2
+Z4 04 10 4 work test_bench fast 0
+=1-74d02b12cf52-60e059ae-152-1f38
 R1
 R2
 n@_opt1
 R3
+T_opt2
+!s110 1625314647
+V>_d9_U>T_?3ZVZHUF4DaK0
+R4
+=1-74d02b12cf52-60e05557-197-3808
+R1
+R2
+n@_opt2
+R3
+R0
 vCPU
-Z4 !s110 1625300793
+Z5 !s110 1625315741
 !i10b 1
 !s100 J>Ki6[Sn=JAhBF@]d3MTW3
-Z5 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Z6 !s11b Dg1SIo80bB@j0V0VzS_@n1
 I>AE1j2:>84GL^Cob@;?M=1
-Z6 dG:/KNTU/4th term/Computer Architechture/HW/Project/Code
-Z7 w1625300785
-Z8 8G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
-Z9 FG:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
-!i122 123
+Z7 dG:/KNTU/4th term/Computer Architechture/HW/Project/Code
+Z8 w1625315738
+Z9 8G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
+Z10 FG:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v
+!i122 134
 L0 1 92
-Z10 VDg1SIo80bB@j0V0VzS_@n1
-Z11 OL;L;2020.4;71
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OL;L;2020.4;71
 r1
 !s85 0
 31
-Z12 !s108 1625300793.000000
-Z13 !s107 G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
-Z14 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
+Z13 !s108 1625315741.000000
+Z14 !s107 G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
+Z15 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
 !i113 0
-Z15 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z16 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 n@c@p@u
 vreadmemh_tb
 !s110 1625297963
 !i10b 1
 !s100 6gjUOmd=7>Q7A_YCCICo20
-R5
-IoJ5gzR04Y0QZhY7LYD:?33
 R6
+IoJ5gzR04Y0QZhY7LYD:?33
+R7
 w1625297743
-R8
 R9
+R10
 !i122 118
 L0 95 7
-R10
 R11
+R12
 r1
 !s85 0
 31
 !s108 1625297963.000000
 !s107 Parameter.v|G:/KNTU/4th term/Computer Architechture/HW/Project/Code/cpu.v|
-R14
-!i113 0
 R15
+!i113 0
+R16
 R2
 vtest_bench
-R4
-!i10b 1
-!s100 L]1ja9XBV9U`c>DORmRAe2
 R5
-I5f>QV[cgHjeZcN:VASMn<1
+!i10b 1
+!s100 `jQF>mIll49MWbcbKm_ij0
 R6
+IQZA]1Leg6Z@mIEY@Z[Om?3
 R7
 R8
 R9
-!i122 123
-L0 94 22
 R10
+!i122 134
+L0 94 26
 R11
+R12
 r1
 !s85 0
 31
-R12
 R13
 R14
-!i113 0
 R15
+!i113 0
+R16
 R2

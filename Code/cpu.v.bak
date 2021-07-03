@@ -93,19 +93,26 @@ endmodule
 
 module test_bench;
 	reg clk;
-	reg [7:0] AC;
-	reg [7:0] PC;
-	reg [7:0] IR;
+	reg [7:0] AC_test;
+	reg [3:0] PC_test;
+	reg [7:0] IR_test;
+	
+	CPU cpu(.clk(clk),
+		.AC_input(AC_test),
+		.PC_input(PC_test),
+		.IR_input(IR_test));
 
 	initial
 	begin
 		clk <= 0;
-		AC = 8'b00000000;
-		PC = 8'b00000000;
-		IR = 01100000; //cmp instruction, direct addressing in address 0000
+		AC_test = 8'b00000000;
+		PC_test = 4'b0000;
+		IR_test = 01100000; //cmp instruction, direct addressing in address 0000
+		#50
+		IR_test = 01011000;
+		#50
+		$finish;
 	end
-	
-	CPU cpu(clk, AC, PC, IR);
 
 	always #5 clk = ~clk;
 endmodule
