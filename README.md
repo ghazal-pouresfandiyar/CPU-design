@@ -1,31 +1,19 @@
 # Custom 8-bit Verilog CPU Design
 
-This repository contains the design and implementation of a custom **8-bit processor** developed as part of a Computer Architecture course. The CPU follows the **Von Neumann architecture** and was verified through simulation using a custom test bench.
+This project involves the design and implementation of an 8-bit processor following the **Von Neumann architecture**. The CPU was modeled in **Verilog** and verified through simulation to execute a variety of memory-resident instructions.
 
 ---
 
 ## 🚀 Project Overview
 
-The objective was to design a functional processor from the ground up, including the instruction set, control unit logic, and ALU.
+The processor is designed with a 3-bit opcode to support 6 core instructions and uses a 1-bit mode selector to toggle between **direct and indirect addressing**. The system operates on an 8-bit data path with a 4-bit address space, allowing for 16 unique memory locations.
 
 ### Key Features
 
-* 
-**Architecture**: 8-bit data path with a 4-bit address space (16 memory locations).
-
-
-* 
-**Addressing Modes**: Supports both **Direct** (Mode 0) and **Indirect** (Mode 1) addressing.
-
-
-* 
-**Instruction Cycle**: Implements a 4-stage cycle: Fetch, Decode, Indirect, and Execute.
-
-
-* 
-**Hardware Description**: Written in **Verilog**.
-
-
+- **Word Size**: 8-bit instructions and data  
+- **Addressing Space**: 16 lines of 8-bit memory  
+- **Control Unit**: 3-bit sequence counter (SC) managing up to 8 timing states ($T_0$ to $T_7$)  
+- **Instruction Cycle**: Fetch, Decode, Indirect, and Execute phases  
 
 ---
 
@@ -33,106 +21,51 @@ The objective was to design a functional processor from the ground up, including
 
 ### Internal Registers
 
-| Register | Description | Size |
-| --- | --- | --- |
-| **PC** | Program Counter (stores next instruction address) | 4-bit 
+| Register | Size | Description |
+|----------|------|-------------|
+| **PC** | 4-bit | Program Counter; holds the address of the next instruction |
+| **AR** | 4-bit | Address Register; holds the memory address for data access |
+| **IR** | 8-bit | Instruction Register; holds the instruction fetched from memory |
+| **AC** | 8-bit | Accumulator; the primary register for ALU operations |
+| **DR** | 8-bit | Data Register; holds data operands during execution |
 
- |
-| **AR** | Address Register (stores memory address for data) | 4-bit 
+---
 
- |
-| **IR** | Instruction Register (holds current instruction) | 8-bit 
+## 📘 Instruction Set Architecture (ISA)
 
- |
-| **AC** | Accumulator (stores ALU results) | 8-bit 
+The instruction format uses:
+- Bit 7 → Addressing mode
+- Bits 6–4 → Opcode
+- Bits 3–0 → Memory address
 
- |
-| **DR** | Data Register (holds data fetched from memory) | 8-bit 
+### Supported Instructions
 
- |
-
-### Instruction Set Architecture (ISA)
-
-The processor uses a 3-bit Opcode to support the following instructions:
-
-* 
-**ADD (000)**: $AC \leftarrow AC + M[AR]$ 
-
-
-* 
-**SUB (001)**: $AC \leftarrow AC - M[AR]$ 
-
-
-* 
-**XOR (010)**: $AC \leftarrow AC \oplus M[AR]$ 
-
-
-* 
-**MUL (011)**: $M[AR] \leftarrow M[AR] \times 2$ 
-
-
-* 
-**LOAD (100)**: $AC \leftarrow M[AR]$ 
-
-
-* 
-**STORE (101)**: $M[AR] \leftarrow AC$ 
-
-
-* 
-**CMP (110)**: $M[AR] \leftarrow \sim M[AR]$ (Bitwise NOT) 
-
-
+- **ADD (000)**: Adds memory content to the Accumulator  
+- **SUB (001)**: Subtracts memory content from the Accumulator  
+- **XOR (010)**: Bitwise XOR between memory and Accumulator  
+- **MUL (011)**: Multiplies by 2 using `AC ← AC + AC`  
+- **LOAD (100)**: Loads data from memory into Accumulator  
+- **STORE (101)**: Stores Accumulator value into memory  
+- **CMP (110)**: Bitwise NOT operation on memory operand  
 
 ---
 
 ## 📂 Implementation Details
 
-### Instruction Format
-
-The 8-bit instruction is structured as follows:
-
-* 
-**Bit 7**: Addressing Mode (0 for Direct, 1 for Indirect).
-
-
-* 
-**Bits 6-4**: Opcode.
-
-
-* 
-**Bits 3-0**: Memory Address.
-
-
-
-### Control Unit
-
-A 3-bit **Sequence Counter (SC)** manages the timing of micro-operations. The execution flow is determined by specific timing signals ($T_0$ to $T_7$).
-
 ### ALU Design
 
-The ALU performs arithmetic and logic operations using:
+The ALU is based on an **8-bit ripple-carry adder/subtractor**. It also includes logic for XOR and NOT operations, with a multiplexer selecting the final output based on the opcode.
 
-* An **8-bit Ripple Carry Adder/Subtractor**.
+### Control Unit Logic
 
-
-* Bitwise XOR and NOT logic units.
-
-
-* A multiplexer to select the final output based on the opcode.
-
-
+The control unit manages the common bus system and ensures correct data flow between registers and memory during each timing state ($T_i$), based on decoded control signals.
 
 ---
 
 ## 🧪 Simulation & Verification
 
-Functional correctness was verified by populating memory with sample data and instructions. The simulation confirmed:
+The design was verified using a **test bench** with a 5ns clock cycle over a 1000ns duration.
 
-1. Successful **Direct Addressing** operations for all logic and arithmetic functions.
-
-
-2. Correct resolution of **Indirect Addressing** (fetching a pointer from memory to find the final operand).
-
-
-3. Proper register transitions and memory updates as viewed on the simulation waveform.
+- **Fetch/Decode**: Verified correct PC increment and instruction loading into IR  
+- **Arithmetic/Logic**: Confirmed correct ADD, SUB, XOR results in waveform simulation  
+- **Indirect Addressing**: Verified multi-level memory addressing behavior  
